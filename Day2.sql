@@ -164,22 +164,23 @@ WHERE O.OrderDate > @@25YearsAgo)
 
 --15 List top 5 locations (Zip Code) where the products sold most.
 
-SELECT TOP 5 O.ShipPostalCode, SUM(OD.Quantity) TotalProductsSold
+SELECT TOP 5 O.ShipPostalCode
 FROM Orders O INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
 WHERE O.ShipPostalCode IS NOT NULL
 GROUP BY ShipPostalCode
-ORDER BY TotalProductsSold DESC
+ORDER BY SUM(OD.Quantity)  DESC
 
 
 --16 List top 5 locations (Zip Code) where the products sold most in last 25 years. 
 
 -- @@25YearsAgo defined in question 14
 -- did not specify if we should include ShipPostalCode is null or not, so i just assumed we only want valid ShipPostalCode which has more real life meaning
-SELECT TOP 5 O.ShipPostalCode, SUM(OD.Quantity) TotalProductsSold
+
+SELECT TOP 5 O.ShipPostalCode
 FROM Orders O INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
-WHERE OrderDate > @@25YearsAgo AND O.ShipPostalCode IS NOT NULL
+WHERE O.OrderDate > @@25YearsAgo AND O.ShipPostalCode IS NOT NULL
 GROUP BY ShipPostalCode
-ORDER BY TotalProductsSold DESC
+ORDER BY  SUM(OD.Quantity)  DESC
 
 
 
@@ -197,7 +198,7 @@ HAVING COUNT(CustomerID) > 2
 
 
 --19.  List the names of customers who placed orders after 1/1/98 with order date.
-SELECT  C.ContactName
+SELECT  C.ContactName, O.OrderDate
 FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID 
 WHERE O.OrderDate > '1998-01-01'
 
