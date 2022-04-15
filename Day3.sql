@@ -39,22 +39,36 @@ FROM [Order Details] OD RIGHT JOIN Orders O ON OD.OrderID = O.OrderID INNER JOIN
 GROUP BY C.City
 
 --5.      List all Customer Cities that have at least two customers. ????
--- direct approach
-SELECT City, COUNT(CustomerID) NbOfCustomer
-FROM Customers 
-GROUP BY City
-HAVING COUNT(CustomerID) >= 2
+-- direct approach cost: 9%
+--SELECT City
+--FROM Customers 
+--GROUP BY City
+--HAVING COUNT(CustomerID) >= 2
 --a.      Use union
--- except 0 and 1 , union 0 and 1 
-
---b.      Use sub-query and no union
+-- except 0 and 1 , union 0 and 1  cost:57%
+SELECT City FROM Customers
+EXCEPT 
+(
+SELECT City FROM Customers GROUP BY City HAVING COUNT(CustomerID) = 1
+UNION 
+SELECT City FROM Customers GROUP BY City HAVING COUNT(CustomerID) = 0
+)
+--b.      Use sub-query and no union cost:34%
+SELECT City FROM Customers
+EXCEPT 
+(
+SELECT City FROM Customers 
+GROUP BY City 
+HAVING COUNT(CustomerID) <2
+)
 -- except 0 and 1 , not using union for 0 and 1 but subquery
 --6.      List all Customer Cities that have ordered at least two different kinds of products.
--- CHECKED 
-SELECT C.City,  Count(DISTINCT OD.ProductID) KindsOfProducts
-FROM Customers C INNER JOIN Orders O ON O.CustomerID = C.CustomerID INNER JOIN [Order Details] OD  ON OD.OrderID = O.OrderID
+-- CHECK CATEGORIEID
+SELECT C.City,  Count(DISTINCT P.CategoryID) KindsOfProducts
+FROM Customers C INNER JOIN Orders O ON O.CustomerID = C.CustomerID INNER JOIN [Order Details] OD  ON OD.OrderID = O.OrderID 
+INNER JOIN Products P ON P.ProductID = OD.ProductID
 GROUP BY C.City
-HAVING Count(DISTINCT OD.ProductID) >= 2
+HAVING Count(DISTINCT P.CategoryID) >= 2
 
 
 
