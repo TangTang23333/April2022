@@ -175,7 +175,6 @@ ORDER BY SUM(OD.Quantity)  DESC
 
 -- @@25YearsAgo defined in question 14
 -- did not specify if we should include ShipPostalCode is null or not, so i just assumed we only want valid ShipPostalCode which has more real life meaning
-
 SELECT TOP 5 O.ShipPostalCode
 FROM Orders O INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderID
 WHERE O.OrderDate > @@25YearsAgo AND O.ShipPostalCode IS NOT NULL
