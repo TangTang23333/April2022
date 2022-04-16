@@ -38,12 +38,12 @@ SELECT C.City, SUM(OD.Quantity) TotalQuantityOrdered
 FROM [Order Details] OD RIGHT JOIN Orders O ON OD.OrderID = O.OrderID INNER JOIN Customers C ON C.CustomerID = O.CustomerID
 GROUP BY C.City
 
---5.      List all Customer Cities that have at least two customers. ????
--- direct approach cost: 9%
---SELECT City
---FROM Customers 
---GROUP BY City
---HAVING COUNT(CustomerID) >= 2
+--5.      List all Customer Cities that have at least two customers.
+--direct approach cost: 9%
+SELECT City
+FROM Customers 
+GROUP BY City
+HAVING COUNT(CustomerID) >= 2
 --a.      Use union
 -- except 0 and 1 , union 0 and 1  cost:57%
 SELECT City FROM Customers
@@ -61,9 +61,9 @@ SELECT City FROM Customers
 GROUP BY City 
 HAVING COUNT(CustomerID) <2
 )
--- except 0 and 1 , not using union for 0 and 1 but subquery
---6.      List all Customer Cities that have ordered at least two different kinds of products.
--- CHECK CATEGORIEID
+
+--6.      List all Customer Cities that have ordered at least two <different kinds> of products.
+-- CHECK CATEGORIEID for different kinds of products
 SELECT C.City,  Count(DISTINCT P.CategoryID) KindsOfProducts
 FROM Customers C INNER JOIN Orders O ON O.CustomerID = C.CustomerID INNER JOIN [Order Details] OD  ON OD.OrderID = O.OrderID 
 INNER JOIN Products P ON P.ProductID = OD.ProductID
@@ -74,7 +74,7 @@ HAVING Count(DISTINCT P.CategoryID) >= 2
 
 --7.      List all Customers who have ordered products, but have the ¡®ship city¡¯ on the order different from their own customer cities.
 -- 
-SELECT DISTINCT C.CustomerID, C.City, O.ShipCity
+SELECT DISTINCT C.CustomerID
 FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID
 WHERE C.City != O.ShipCity 
  
@@ -99,12 +99,11 @@ WHERE dt.OrderRank = 1
 
 
 
---9.      List all cities that have never ordered something but we hav e employees there.
+--9.      List all cities that have never ordered something but we have employees there.
 --
-
 --a.      Use sub-query
 --
-SELECT C.City, COUNT(O.OrderID) NbOfOrder
+SELECT C.City
 FROM Customers C LEFT JOIN Orders O ON O.CustomerID = C.CustomerID
 WHERE C.City IN (SELECT DISTINCT City FROM Employees)
 GROUP BY C.City
@@ -113,14 +112,15 @@ HAVING COUNT(O.OrderID) = 0
 
 --b.      Do not use sub-query
 -- USE JOIN 
-SELECT C.City, COUNT(O.OrderID) NbOfOrder
+SELECT C.City
 FROM Customers C LEFT JOIN Orders O ON O.CustomerID = C.CustomerID INNER JOIN Employees E ON E.City = C.City
 GROUP BY C.City
 HAVING COUNT(O.OrderID) = 0 ;
 
 
---10.  List one city, if exists, that is the city from where the employee sold most orders (not the product quantity) is, and also the city of most total quantity of products ordered from. (tip: join  sub-query)
---ISNULL(col2,0)
+--10.  List one city, if exists, that is the city from where the employee sold most orders (not the product quantity) is, 
+-- and also the city of most total quantity of products ordered from. (tip: join  sub-query)
+
 
 SELECT T1.City
 FROM (
@@ -144,7 +144,7 @@ ON T1.City = T2.City;
 
 
 /*
-we can use distinct * to only get the table without duplicates. 
+we can use distinct * to get the table without duplicates. 
 
 we can also use group by or row_number to find duplicates and then delete the duplicates.
 */ 
