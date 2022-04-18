@@ -142,6 +142,8 @@ FROM Person.CountryRegion cr INNER JOIN Person.StateProvince sp ON cr.CountryReg
 WHERE cr.Name in ('Germany', 'Canada')
 
 
+--????? filter by means we want that filter condition or not ???
+
 
 
 USE Northwind
@@ -204,10 +206,11 @@ HAVING COUNT(CustomerID) > 2
 
 
 --19.  List the names of customers who placed orders after 1/1/98 with order date.
-SELECT  C.ContactName, O.OrderDate
+SELECT  DISTINCT C.ContactName, O.OrderDate
 FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID 
 WHERE O.OrderDate > '1998-01-01'
 
+-- distinct, no dupliactes
 
 --20.  List the names of all customers with most recent order dates????
 -- with most recent OrderDate of each customer
@@ -215,16 +218,17 @@ SELECT C.ContactName, MAX(O.OrderDate) MostRecentOrderDate
 FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID 
 GROUP BY C.ContactName
 
-
+-- ???? specify the requirments, null for customers with no orders 
+-- or disregard those customers
 
 
 --21.  Display the names of all customers  along with the  count of products they bought
 
 SELECT C.ContactName, sum(OD.Quantity) TotalProductBought
-FROM [Order Details] OD INNER JOIN  Orders O ON O.OrderID = OD.OrderID INNER JOIN Customers C ON O.CustomerID = C.CustomerID
+FROM [Order Details] OD INNER JOIN  Orders O ON O.OrderID = OD.OrderID RIGHT JOIN Customers C ON O.CustomerID = C.CustomerID
 GROUP BY C.ContactName
 
-
+-- shuold include all customers, even if they do not have any orders.
 
 
 --22.  Display the customer ids who bought more than 100 Products with count of products.
@@ -247,10 +251,10 @@ FROM Suppliers S CROSS JOIN Shippers Sh
 --24.  Display the products order each day. Show Order date and Product Name.
 -- DO WE NEED 
 SELECT O.OrderDate, P.ProductName
-FROM [Order Details] OD INNER JOIN Orders O ON O.OrderID = OD.OrderID INNER JOIN Products P ON OD.ProductID = P.ProductID
+FROM [Order Details] OD INNER JOIN Orders O ON O.OrderID = OD.OrderID RIGHT JOIN Products P ON OD.ProductID = P.ProductID
 GROUP BY O.OrderDate, P.ProductName
 
-
+-- when not specify, include all products even if no order of such products ????
 --25.  Displays pairs of employees who have the same job title.
 SELECT E.FirstName + E.LastName Employee1, EE.FirstName + EE.LastName Employee2
 FROM Employees E INNER JOIN Employees EE ON E.Title = EE.Title 
@@ -264,7 +268,7 @@ FROM Employees E INNER JOIN Employees  M ON E.ReportsTo = M.EmployeeID
 GROUP BY M.EmployeeID
 HAVING COUNT(E.EmployeeID) > 2
 
-
+-- count here will disregard null values???
 --27.  Display the customers and suppliers by city. The results should have the following columns ???? what is Name????
 --
 --City
