@@ -26,6 +26,11 @@ SELECT DISTINCT C.City
 FROM Employees  E RIGHT JOIN Customers C ON E.City = C.City 
 WHERE E.City IS NULL
 
+-- we can also use EXCEPT, efficiency seems the best 26%
+SELECT City FROM Customers 
+EXCEPT 
+SELECT City FROM Employees
+
 --3. List all products and their total order quantities throughout all orders.
 SELECT P.ProductID, P.ProductName,  SUM(OD.Quantity) TotalQuantityOrdered
 FROM [Order Details]  OD RIGHT JOIN Products P ON P.ProductID = OD.ProductID
@@ -87,6 +92,7 @@ GROUP BY C.City
 HAVING Count(DISTINCT P.CategoryID) >= 2
 
 
+--???? if col is in group by, and the only not aggregated col in groupby, do we need distinct? 
 
 --7.      List all Customers who have ordered products, but have the ¡®ship city¡¯ on the order different from their own customer cities.
 -- 
@@ -113,31 +119,63 @@ FROM
 FROM Customers C INNER JOIN Orders O ON C.CustomerID = O.CustomerID INNER JOIN [Order Details] OD 
 ON OD.OrderID = O.OrderID INNER JOIN PopularTop5 P5 ON P5.ProductID = OD.ProductID
 GROUP BY OD.ProductID, P5.ProductName, C.City, P5.AvgPrice) dt
-WHERE dt.OrderRank = 1 
+WHERE dt.OrderRank = 1
+
+
+-- we can use subquery in select 
+SELECT TOP 5 OD2.ProductID, P.ProductName, AVG(OD2.UnitPrice) AvgPrice, 
+(SELECT Top 1 C.City, sum(od1.quantity)
+FROM [Order Details] OD1 INNER JOIN Orders O ON O.OrderID = OD1.OrderID INNER JOIN Customers C ON C.CustomerID = O.CustomerID
+WHERE OD1.ProductID = OD2.ProductID
+GROUP BY C.City
+ORDER BY SUM(OD1.Quantity) DESC
+)
+FROM [Order Details] OD2 INNER JOIN Products P ON P.ProductID = OD2.ProductID
+GROUP BY OD2.ProductID,  P.ProductNAME
+ORDER BY SUM(OD2.Quantity) DESC 
+
+-- what if we want to list TotalSold as well? only one col is allowed in subquery in select 
+
+
+
+
+
 
 --9.      List all cities that have never ordered something but we have employees there.
 --
---a.      Use sub-query
---
-SELECT C.City
-FROM Customers C LEFT JOIN Orders O ON O.CustomerID = C.CustomerID
-WHERE C.City IN (SELECT DISTINCT City FROM Employees)
-GROUP BY C.City
-HAVING COUNT(O.OrderID) = 0 
+--a.      Use sub-query 35%
+
+SELECT E.City
+FROM Employees E
+WHERE E.City NOT IN (
+SELECT DISTINCT City 
+FROM Orders O INNER JOIN Customers C ON C.CustomerID = O.CustomerID );
 
 
+
+--select count(distinct shipcity) from orders -- 70 different citys 
+/*
+select distinct city from Employees
+Kirkland
+London
+Redmond not in O
+Seattle
+Tacoma  not in O */
 --b.      Do not use sub-query
--- USE JOIN 
-SELECT C.City
-FROM Customers C LEFT JOIN Orders O ON O.CustomerID = C.CustomerID INNER JOIN Employees E ON E.City = C.City
-GROUP BY C.City
+-- Att:  we have to use two left join to include all E.city
+-- city not appear in Table Order have zero orders
+-- USE JOIN  65%
+SELECT distinct E.City, count(O.OrderID) TotalOrders
+FROM Employees E LEFT JOIN Customers C ON C.City = E.City 
+LEFT JOIN Orders O ON C.CustomerID = O.CustomerID
+GROUP BY E.City
 HAVING COUNT(O.OrderID) = 0 ;
 
 
 --10.  List one city, if exists, that is the city from where the employee sold most orders (not the product quantity) is, 
 -- and also the city of most total quantity of products ordered from. (tip: join  sub-query)
 
-
+-- here , it means the city of employees, 
 SELECT T1.City
 FROM (
 -- city with most orders
@@ -149,7 +187,7 @@ ORDER BY COUNT(O.OrderID) DESC) T1
 INNER JOIN 
 -- city with most products ordered
 (SELECT TOP 1 C.City
-FROM Customers C LEFT JOIN Orders O ON O.CustomerID = C.CustomerID INNER JOIN [Order Details] OD ON OD.OrderID = O.OrderID
+FROM Customers C LEFT JOIN Orders O ON O.CustomerID = C.CustomerID LEFT JOIN [Order Details] OD ON OD.OrderID = O.OrderID
 GROUP BY C.City
 ORDER BY SUM(OD.Quantity) DESC) T2 
 
