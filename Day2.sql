@@ -5,11 +5,16 @@ go
 SELECT COUNT(*) Total
 FROM Production.Product
 
+--  !!!! make sure differenc btw * and productId
+
 /*2. Write a query that retrieves the number of products in the Production.Product table that are included in a subcategory. 
 --The rows that have NULL in column ProductSubcategoryID are considered to not be a part of any subcategory.*/
 SELECT COUNT(*) 
 FROM Production.Product
 WHERE ProductSubcategoryID IS NOT NULL
+
+-- if one table is involved, then is alias and reference to table name is necessary?????
+
 
 --3 How many Products reside in each SubCategory? Write a query to display the results with the following titles.
 
@@ -21,6 +26,7 @@ FROM Production.Product
 WHERE ProductSubcategoryID is not NULL
 GROUP BY ProductSubcategoryID
 
+-- att: when realted to kinds/types, always use count of ID. 
 --4 How many products that do not have a product subcategory.
 SELECT COUNT(*)
 FROM Production.Product 
@@ -29,7 +35,7 @@ WHERE ProductSubcategoryID IS NULL
 --5 Write a query to list the sum of products quantity in the Production.ProductInventory table.
 SELECT SUM(Quantity)
 FROM Production.ProductInventory
-
+GROUP BY ProductID;
 --6 
 /* Write a query to list the sum of products in the Production.ProductInventory table and LocationID set to 40 
 and limit the result to include just summarized quantities less than 100.
@@ -61,9 +67,10 @@ HAVING SUM(Quantity) < 100
 --8 
 /*Write the query to list the average quantity for products where column LocationID has the value of 10 
 from the table Production.ProductInventory table. */
-SELECT AVG(Quantity) 
+SELECT ProductID, AVG(Quantity) 
 FROM Production.ProductInventory
 WHERE LocationID = 10 
+GROUP BY ProductID
 
 
 --9 
