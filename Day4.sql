@@ -6,11 +6,12 @@ GO
 
 CREATE VIEW view_product_order_Tang
 AS
-SELECT ProductID, SUM(Quantity) TotalProductsSold
-FROM [Order Details]
-GROUP BY ProductID;
+SELECT P.ProductID, P.ProductName, SUM(OD.Quantity) TotalProductsSold
+FROM [Order Details] OD RIGHT JOIN Products P ON P.ProductID = OD.ProductID
+GROUP BY P.ProductID,  P.ProductName;
 
--- SELECT * FROM view_product_order_Tang;
+--SELECT * FROM view_product_order_Tang
+
 
 --2.      Create a stored procedure ¡°sp_product_order_quantity_[your_last_name]¡± 
 --that accept product id as an input and total quantities of order as output parameter.
@@ -24,6 +25,15 @@ SELECT @total = SUM(Quantity)
 FROM [Order Details]
 WHERE ProductID = @id
 END;
+
+
+-- test
+--BEGIN
+--declare @totalsold int 
+--exec  sp_product_order_quantity_Tang 1, @totalsold out
+--select @totalsold
+--END
+
 
 --3.      Create a stored procedure ¡°sp_product_order_city_[your_last_name]¡± 
 --that accept product name as an input and top 5 cities that ordered most that product combined 
@@ -41,10 +51,13 @@ GROUP BY C.City,OD.ProductID
 ORDER BY SUM(OD.Quantity) DESC
 END;
 
+
+
 -- test
 --BEGIN
 --exec  sp_product_order_city_Tang 'Nord-Ost Matjeshering'
 --END
+
 
 --Nord-Ost Matjeshering
 --select productname from products where productid = 30
