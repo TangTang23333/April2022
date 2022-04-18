@@ -28,25 +28,27 @@ END;
 
 
 -- test
---BEGIN
+
 --declare @totalsold int 
 --exec  sp_product_order_quantity_Tang 1, @totalsold out
 --select @totalsold
---END
+
 
 
 --3.      Create a stored procedure ¡°sp_product_order_city_[your_last_name]¡± 
 --that accept product name as an input and top 5 cities that ordered most that product combined 
 --with the total quantity of that product ordered from that city as output.
 
+--????? nvarchar two bytes a character, double the space
 CREATE PROC sp_product_order_city_Tang 
 @PName varchar(30)
 AS 
 BEGIN
 SELECT TOP 5 C.City, SUM(OD.Quantity) TotalProductsOrdered
 FROM Customers C INNER JOIN Orders O ON O.CustomerID = C.CustomerID 
-INNER JOIN [Order Details] OD ON  OD.OrderID = O.OrderID
-WHERE OD.ProductID = (SELECT ProductID FROM Products WHERE ProductName= @PName)
+INNER JOIN [Order Details] OD ON  OD.OrderID = O.OrderID 
+INNER JOIN Products P ON P.ProductID = OD.ProductID
+WHERE P.ProductName= @PName
 GROUP BY C.City,OD.ProductID
 ORDER BY SUM(OD.Quantity) DESC
 END;
@@ -55,7 +57,7 @@ END;
 
 -- test
 --BEGIN
---exec  sp_product_order_city_Tang 'Nord-Ost Matjeshering'
+-- exec  sp_product_order_city_Tang 'Nord-Ost Matjeshering'
 --END
 
 
@@ -99,7 +101,7 @@ FOREIGN KEY (City)
 REFERENCES city_Tang(Id)
 ON DELETE SET NULL;
 
-DELETE FROM city_Tang WHERE City = 'Seattle'
+
 
 --select * from people_Tang;
 --select * from city_Tang;
@@ -109,10 +111,11 @@ INSERT INTO city_Tang VALUES
 
 UPDATE people_Tang
 SET City = (SELECT Id FROM city_Tang WHERE City = 'Madison')
-WHERE City is null;
+WHERE City = (SELECT Id FROM city_Tang  WHERE City = 'Seattle')
 
+DELETE FROM city_Tang WHERE City = 'Seattle'
 
-
+--select * from people_Tang
 --c. Create a view ¡°Packers_your_name¡± lists all people from Green Bay. 
 --If any error occurred, no changes should be made to DB. (after test) Drop both tables and view.
 CREATE VIEW Packers_Yihuan_Tang AS
@@ -120,6 +123,7 @@ SELECT P.Name
 FROM people_Tang P INNER JOIN city_Tang C ON C.Id = P.City
 WHERE C.City = 'Green Bay';
 
+--select * from Packers_Yihuan_Tang
 -- test done
 DROP TABLE people_Tang
 DROP TABLE city_Tang
@@ -132,6 +136,8 @@ DROP VIEW Packers_Yihuan_Tang
 --with all employees that have a birthday on Feb. (Make a screen shot) drop the table. 
 --Employee table should not be affected.
 -- 1948-12-08 00:00:00.000
+-- ???? add #, tempTable, would only available within the procedure
+-- ## available outside the proc, but goes away when the proc is deleted
 DROP PROCEDURE sp_birthday_employees_Tang; 
 CREATE PROC sp_birthday_employees_Tang
 AS 
@@ -142,7 +148,8 @@ FROM Employees
 WHERE MONTH(BirthDate) = 2
 END
 
-EXEC sp_birthday_employees_Tang
+EXEC sp_birthday_employees_Tang]
+
 
 --SELECT * FROM birthday_employees_Tang
 
