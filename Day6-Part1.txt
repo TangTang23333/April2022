@@ -1,0 +1,132 @@
+// 1. What type would you choose for the following “numbers”?
+//A person’s telephone
+string
+//A person’s height
+double if 1.80m else string like 5'6"
+//A person’s age
+uint
+//A person’s gender (Male, Female, Prefer Not To Answer)
+string
+//A person’s salary
+double 
+//A book’s ISBN
+string
+//A book’s price
+double
+//A book’s shipping weight
+double 
+//A country’s population
+ulong  
+//The number of stars in the universe
+ulong
+//The number of employees in each of the small or medium businesses in the
+//United Kingdom (up to about 50,000 employees per business)
+ushort
+
+
+//2.What are the difference between value type and reference type variables? What is
+//boxing and unboxing?
+
+value type such as int, float, decimal, boolean, etc which contain values stored in stack.
+reference type such as string, object, etc who contian address pointer in the memory
+
+----------------------------------------------------------------------------
+value type                       | reference type 
+----------------------------------------------------------------------------
+int, float, decimal, boolean etc | string, object, stringbuilder etc
+do not accept null    		   | accept null values
+stored in stack       		   | stored in heap 
+not collected by GC   		   | collected by GC 
+create by Enum/Struct 	         | created by Class, Interface, Delegate etc
+actual value stored  		   | acutal address pointer stored
+-----------------------------------------------------------------------------
+//3. What is meant by the terms managed resource and unmanaged resource in .NET
+
+managed code, which has been compiled into intermediate language but not machine code, could be executed by machine
+in a safe framework, handling such as threads, memory, etc.
+
+unmanaged code, which has been compiled to machine-read code directly, which can be executed by machine directly,
+dangerous to the machine and OS.
+
+
+//4. Whats the purpose of Garbage Collector in .NET?
+
+
+GC in .Net automatically handles allocation and deallocation of memory. Automatic management can prevent problems such
+as memory leakage, stack overflow etc.
+
+
+//Controlling Flow and Converting Types
+//Test your Knowledge
+//1. What happens when you divide an int variable by 0?
+Error, can not be divided by zero
+
+//2. What happens when you divide a double variable by 0?
+return NaN 
+
+//3. What happens when you overflow an int variable, that is, set it to a value beyond its
+//range?
+Error, suggest goes to next data type with bigger range or 
+integral constant is too large. 
+
+//4. What is the difference between x = y++; and x = ++y;?
+y = x++, y = oringial value of x, before add 1 to x.
+y = ++x, y = new value of x, which adds 1 to itself.
+
+//5. What is the difference between break, continue, and return when used inside a loop
+statement?
+
+return: return the output, function ends
+break: stops the loop, and out of the loop
+continue: do nothing, continue to the next iteration of loop 
+
+-- no pass, just leave it blank 
+
+
+//6. What are the three parts of a for statement and which of them are required?
+for (start, end condition, increment)  {
+// do something
+}
+
+//7. What is the difference between the = and == operators?
+
+=: declare value, define variables
+==: equals to 
+
+//8. Does the following statement compile? for ( ; true; ) ;
+
+this will be a dead loop, never ends
+
+//9. What does the underscore _ represent in a switch expression?
+33
+
+_ used to pattern match a variable of type object in a switch statement
+This code will match the new _ and discard the variable passed to the case in switch(x)
+
+static void Main(string[] args)
+{
+    object x = 6.4; 
+    switch (x)
+    {
+        case string _:
+            Console.WriteLine("it is string");
+            break;
+        case double _:
+            Console.WriteLine("it is double");
+            break;
+        case int _:
+            Console.WriteLine("it is int");
+            break;
+        default:
+            Console.WriteLine("it is Unknown type");
+            break;
+    }
+
+    // end of main method
+}
+
+
+//10. What interface must an object implement to be enumerated over by using the foreach
+statement?
+IEnumerator
+
