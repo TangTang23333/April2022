@@ -1,0 +1,15 @@
+D:\Antra-training\Assignments\Day6-2\bin\Debug\net6.0\Day6-2.exe
+D:\Antra-training\Assignments\Day6-2\bin\Debug\net6.0\Day6-2.deps.json
+D:\Antra-training\Assignments\Day6-2\bin\Debug\net6.0\Day6-2.runtimeconfig.json
+D:\Antra-training\Assignments\Day6-2\bin\Debug\net6.0\Day6-2.dll
+D:\Antra-training\Assignments\Day6-2\bin\Debug\net6.0\Day6-2.pdb
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.csproj.AssemblyReference.cache
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.AssemblyInfoInputs.cache
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.AssemblyInfo.cs
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.csproj.CoreCompileInputs.cache
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.dll
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\refint\Day6-2.dll
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.pdb
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\Day6-2.genruntimeconfig.cache
+D:\Antra-training\Assignments\Day6-2\obj\Debug\net6.0\ref\Day6-2.dll
