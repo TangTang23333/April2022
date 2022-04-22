@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "1YiYmkmlpraW9QT+af0+m0PqVjFOgIpmdZFufCcrBY82lYgOR5MdoCwQTjteHwhX56OEIN/8QLLSrJ6AMkwLUQ==",
+  "success": true,
+  "projectFilePath": "D:\\Antra-training\\Assignments\\Day7\\Day7.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.runtime\\1.0.1\\microsoft.netcore.runtime.1.0.1.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.runtime.coreclr\\1.0.1\\microsoft.netcore.runtime.coreclr.1.0.1.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\microsoft.netcore.runtime.native\\1.0.1\\microsoft.netcore.runtime.native.1.0.1.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\yihua\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
