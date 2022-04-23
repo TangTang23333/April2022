@@ -69,3 +69,23 @@ Console.WriteLine($"index of 3 is {l.Find(3)}");
 //3.Void Save()
 //4.IEnumerable < T > GetAll()
 ////5.T GetById(int id)
+/// <summary>
+/// 
+/// </summary>
+/// 
+Test t1 = new Test(1, "Apple");
+Test t2 = new Test(2, "Banana");
+Test t3 = new Test(3, "Orange");
+
+
+GenericRepositor<Test> r = new GenericRepositor<Test>();
+
+r.Add(t1);
+r.Add(t2);
+r.Add(t3);
+
+r.Save();
+r.GetAll();
+
+
+
