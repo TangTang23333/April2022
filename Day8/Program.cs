@@ -73,12 +73,12 @@ Console.WriteLine($"index of 3 is {l.Find(3)}");
 /// 
 /// </summary>
 /// 
-Test t1 = new Test(1, "Apple");
-Test t2 = new Test(2, "Banana");
-Test t3 = new Test(3, "Orange");
+Entity t1 = new Entity(1, "Apple");
+Entity t2 = new Entity(2, "Banana");
+Entity t3 = new Entity(3, "Orange");
 
 
-GenericRepositor<Test> r = new GenericRepositor<Test>();
+GenericRepositor<Entity> r = new GenericRepositor<Entity>();
 
 r.Add(t1);
 r.Add(t2);

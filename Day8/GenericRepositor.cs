@@ -5,43 +5,45 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Day8
-{   public class Test
+{   public class Entity
     {
         public int ID;
         public string Name;
 
-        public Test(int id, string name){
+        public Entity(int id, string name){
             ID = id;
             Name = name;
             }
 
     }
-    internal class GenericRepositor<T>: IRepositor<T> where T: Test
+    internal class GenericRepositor<T>: IRepositor<T> where T: Entity
     {
         
-        public Dictionary<int, T> dict = new Dictionary<int, T> { };
+        public List<T> list = new List<T>();
 
 
         public void Add(T item)
         {
-            dict[item.ID] = item;
+            list.Add(item);
         }
 
         public void Remove(T item)
         {
-            foreach (KeyValuePair <int , T> pair in dict)
+            foreach ( T t in list)
             {
-                if (pair.Value == item)
+                if (t == item)
                 {
-                    dict.Remove(pair.Key);
+                    list.Remove(t);
                     return;
                 }
             }
         }
         public void Save()
         {
-            foreach (KeyValuePair<int, T> pair in dict)
-            { Console.Write(pair.Value.Name);
+
+            // not sure what this action is for , i just print
+            foreach (T t in list)
+            { Console.Write("{t.ID} + {t.Name}");
                 Console.Write("    ");
             }
 
@@ -50,13 +52,21 @@ namespace Day8
 
         public IEnumerable<T> GetAll()
         {
-            return dict.Values;
+            return list.AsEnumerable();
         }
 
 
         public T GetById(int id)
-        {
-            return dict[id];
+        {   
+            foreach (T t in list)
+            {
+                if (t.ID == id)
+                {
+                    return t;
+                }
+            }
+
+            return null;
         }
 
     }
