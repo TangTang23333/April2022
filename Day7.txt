@@ -1,0 +1,238 @@
+1. What are the six combinations of access modifier keywords and what do they do? 
+
+public   : can be accessed from anywhere in the project 
+protected: can be accessed within class and its sub classes
+private  : can be accessed within class/structure
+internal : can be accessed within current project assembly
+protected internal: can be accessed in current assembly or derived classes in other assembly
+private protected : can be accessed in (class or derived classes) but only in current assembly
+
+
+2.What is the difference between the static, const, and readonly keywords when applied to a type member?
+------------------------------------------------------------------------------------------------------------------------------------
+		const                                    | readonly            	           | static
+------------------------------------------------------------------------------------------------------------------------------------
+field   |must be assigned when declared when compiled    | can only be assigned at compile | not tied to any specific object
+	|can not be modified.                            | time or runtime(declaration or  | common to all objects
+	|						 | constructor , immutable         |
+------------------------------------------------------------------------------------------------------------------------------------
+type    | built-in value types only, immutable   	 | value and reference type	   | can not be used with indexer, destructor or 
+	| no user defiend type  		         | class			   | types other than classes
+	| all value type and 				 | immutable                       |
+	| reference type other than string = null        |				   | 
+------------------------------------------------------------------------------------------------------------------------------------
+static  | by default,  static 		                 | can be static		   | static
+------------------------------------------------------------------------------------------------------------------------------------
+usage   | when certain vairable is not changed any more  | make filed constant at runtime  | static class must contain only static
+	|						 | values.			   | members(property/method)
+	|						 | delegate can not be readonly	   | static method can only access static member 
+	|						 | event can not be readonly	   | static constructor can not be parametrized, 
+	|						 |				   | always be public by default, used to initialize static field.
+------------------------------------------------------------------------------------------------------
+
+
+3. What does a constructor do?
+special method shares same name with class, return void
+constructor is used to initilize and create a class object, where we can have params and pass them to object.
+default constructor does not have parameters
+one class can have multiple constructors. 
+it can not be overridden, since it is not inherited. but it can be overloaded. 
+Constructor from base class is always called first. if no base(params) is specified in derived class, the C# compiler automatically supplies a call to the base class' default or parameterless constructor.
+
+class Base   
+{  
+    public Base() {  
+        Console.WriteLine("Inside Base Constructor");  
+    }
+   
+}  
+class Derived: Base {  
+    public Derived() {  
+        Console.WriteLine("Inside The Derived Constructor");  
+    }
+}  
+Derived d = new Derived();
+output: Inside Base Constructor; "Inside The Derived Constructor 
+!!! base constructor is always called first. 
+
+using System;
+
+using System.Text;  
+  
+ 
+public class Program {
+    
+    
+    
+    
+    static void Main() {
+        Circle c = new Circle(5);
+        
+    }
+}
+
+   public class Shape
+{
+    // A few example members
+    public int Height ;
+    public int Width;
+    
+    public Shape(int a, int b) {
+        Height = a;
+        Width = b;
+         Console.WriteLine("two paramter constructor");
+    }
+    
+    public Shape(int a): this(a, a)
+    {
+        Console.WriteLine("one paramter constructor");
+    }
+    
+    public Shape() {
+        Console.WriteLine("paramterless constructor");
+    }
+    
+
+    // Virtual method
+    public virtual void Draw()
+    {
+        Console.WriteLine("Performing base class drawing tasks");
+    }
+}
+
+public class Circle : Shape
+{   
+    
+    public Circle(int a )  {
+         Console.WriteLine("derived class Circle constructor");
+    }
+    public override void Draw()
+    {
+        // Code to draw a circle...
+        Console.WriteLine("Drawing a circle");
+        base.Draw();
+    }
+}
+
+//output: 
+//paramterless constructor
+//derived class Circle constructor
+// if changed : public Circle(int a) :base(a) {
+}  // that is to say, we specify which base constructor to call
+//output:
+//two paramter constructor
+//paramter constructor
+//derived class Circle constructor
+
+4. Why is the partial keyword useful?
+it offers us the flexibility to implement functionaloties of one single class in several files and all these files
+are combined to a single file at compile time. 
+- same/consistent  access modofiers in all files
+- one abstract method will make the whole class abstract class 
+- all files be ready at the time of compiling 
+
+
+5. What is a tuple?
+tuple is a container that can contains a sequence of elements of different data types. 
+it is immutable. can not change once created. 
+it can hold ob object with different properties, like Tuple Tom = Tuple.Create("Tom", 25, "student");
+do not have to create another class, can use tuple, convenient. 
+
+it can be nested in another tuple. 
+can be used as paramter
+can return a tuple for containing multiple return values.(if you do not want to use out ref) 
+
+6. What does the C# record keyword do?
+Two variables of a class type ARE EQUAL only:
+
+IF type of those two variables have the same class type
+AND IF the two variables are pointing to the same object
+
+On the other hand, two variables of the record type ARE EQUAL only:
+
+IF the two variables have the same record type definition
+AND IF the values are equal in both records
+
+syatax is same with creating class/struct, just add keyword record before class/struct 
+record class  --> reference type
+record struct --> value type
+
+record can be mutable, but ther serve immutable data model for primary purpose.
+brief syntax to create reference type with immutable properties
+value-equality behavior useful for data centric object.
+support hierarchical inheritance. 
+
+
+7. What does overloading and overriding mean?
+overloading : static polymorphism, compile time, same name methods within class with different parameter list. 
+overriding:   dynamic polymorphis, run time,     same name method in derived class with different implementation. 
+
+
+8. What is the difference between a field and a property?
+changes to field can be made without breaking codes other than for members of the type. exclude const and static readonly because they never change
+field	:  should be private, 
+property:  provided to instance for accessing fields
+
+
+
+9. How do you make a method parameter optional?
+eg: public void Method1(int a, int b = 20);
+if b is not passed when calling Method1, then b will use default value 20
+
+
+
+10. What is an interface and how is it different from abstract class?
+interface is a contract, declares the methods and property of a class without implementation. it 
+neither can have instance
+abstract class can have both abstract/concrete methods, while interface contains ONLY ABSTRACT method.
+interface can have multi inheritance, while abstract class is single inheritance.
+>= 1 abstract method will make this entire class abstract class.
+
+
+
+11. What accessibility level are members of an interface?
+By default public, because they have to be implemented in class which inheritate the interface. 
+
+
+12. True/False. Polymorphism allows derived classes to provide different implementations
+of the same method.
+True 
+
+13. True/False. The override keyword is used to indicate that a method in a derived class is
+providing its own implementation of a method.
+True
+
+
+14. True/False. The new keyword is used to indicate that a method in a derived class is
+providing its own implementation of a method.
+No.
+
+15. True/False. Abstract methods can be used in a normal (non-abstract) class.
+False 
+
+16.True/False. Normal (non-abstract) methods can be used in an abstract class.
+True
+
+17. True/False.Derived classes can override methods that were virtual in the base class. 
+True
+
+18. True/False. Derived classes can override methods that were abstract in the base class. 
+True, derived class must override abstract methods in base class
+
+19. True/False.In a derived class, you can override a method that was neither virtual non abstract in the
+base class.
+None. You can have a method with same name and the base class method, but it does NOT OVERRIDE the base class method.
+
+20. True/False. A class that implements an interface does not have to provide an
+implementation for all of the members of the interface.
+False. It must provide implementation of all the members in the interface.
+
+21. True/False. A class that implements an interface is allowed to have other members that
+aren’t defined in the interface.
+True. Class can inheritate from multi interfaces and base class. 
+
+22. True/False. A class can have more than one base class.
+False. Single inheritance.
+
+23. True/False. A class can implement more than one interface.
+True. Interface inheritance is multiple inheritance. 
