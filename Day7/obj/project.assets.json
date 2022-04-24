@@ -768,19 +768,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yihua\\.nuget\\packages\\": {}
+    "C:\\Users\\15109\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Antra-training\\Assignments\\Day7\\Day7.csproj",
+      "projectUniqueName": "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day7\\Day7.csproj",
       "projectName": "Day7",
-      "projectPath": "D:\\Antra-training\\Assignments\\Day7\\Day7.csproj",
-      "packagesPath": "C:\\Users\\yihua\\.nuget\\packages\\",
-      "outputPath": "D:\\Antra-training\\Assignments\\Day7\\obj\\",
+      "projectPath": "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day7\\Day7.csproj",
+      "packagesPath": "C:\\Users\\15109\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yihua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\15109\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

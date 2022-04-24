@@ -37,6 +37,12 @@ using Day7.q7;
 //index of the first number to swap, and the other one will be the length of the array minus
 //the index minus 1. This is to account for the fact that the array is 0-based. So basically,
 //you’ll be swapping array[index] with array[arrayLength – index – 1].
+
+
+
+
+
+
 Console.WriteLine("Before reverse the array is as follows:");
 int[] res = ReverseArray.GenerateNumbers(10);
 ReverseArray.PrintNumbers(res);
@@ -119,8 +125,8 @@ for (int i = 1; i < 11; i++)
 //Will offer list of courses
 
 List<String> rebby_address = new List<String> { "1 avenue", "2 blvd" };
-Instructor Rebby = new Instructor(1,"1988-10-30","2014-01-01","Rebby","Female", 
-    35, 40, rebby_address , 2, 1,"Instructor");
+Instructor Rebby = new Instructor(1, "1988-10-30", "2014-01-01", "Rebby", "Female",
+    35, 40, rebby_address, 1, 1, "Instructor");
 
 Console.WriteLine(Rebby.ReportsTo);
 
@@ -178,5 +184,4 @@ Console.WriteLine($"Blackball had been thrown {blackball.TimesOfThrown()} times 
     $"size is {blackball.Size}");
 Console.WriteLine($"Blueball had been thrown {blueball.TimesOfThrown()}times  " +
     $"size is {blueball.Size}");
-
 

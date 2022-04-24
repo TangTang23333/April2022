@@ -8,14 +8,10 @@ namespace Day7.Class.Interfaces
 {
     internal interface IInstructorService : IPersonService
     {
-        public decimal GetSalary(decimal bonus, Class.Instructor person)
-        {
+        decimal GetSalary();
+        
 
-            int experience = DateTime.Now.Year - Convert.ToDateTime(person.JoinDate).Year;
-
-            return person.HourSalary * person.Hours + experience * bonus;
-                
-        }
+           
     }
 
 }
