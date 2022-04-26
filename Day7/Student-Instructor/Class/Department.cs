@@ -9,16 +9,15 @@ namespace Day7.Class.Class
 {
     internal class Department : IDepartmentService
     {
-        public int ID, HeadId;
+        public int ID;
         public string StartTime, EndTime;
         public double Budget;
         
 
         public Department(
-            int id, int head, string start, string end, double budget)
+            int id, string start, string end, double budget)
         {
             ID = id;
-            HeadId = head;
             StartTime = start;
             EndTime = end;
             Budget = budget;
@@ -26,15 +25,15 @@ namespace Day7.Class.Class
 
         }
 
-        public List<int> GetAllCourses(List<Course> courses, Department dpt)
+        public List<string> GetAllCourses(List<Course> courses)
         {
-            List<int> res = new List<int>();
+            List<string> res = new List<string>();
 
             foreach (Class.Course c in courses)
             {
-                if (c.DepartmentID == dpt.ID)
+                if (c.DepartmentID == ID)
                 {
-                    res.Add(c.ID);
+                    res.Add(c.Name);
                 }
 
 
@@ -48,20 +47,21 @@ namespace Day7.Class.Class
             return dpt.Budget;
         }
 
-        string IDepartmentService.GetHead(List<Instructor> instructors, Department dpt)
+       
+        public string GetHead(List<Instructor> instructors)
         {
 
 
             foreach (Class.Instructor instructor in instructors)
             {
 
-                if (instructor.DepartmentID != dpt.ID)
+                if (instructor.DepartmentID != ID)
                 {
                     continue;
                 }
                 if (instructor.ReportsTo == instructor.ID)
                 {
-                    dpt.HeadId = instructor.ID;
+                    
                     return instructor.Name;
                 }
             }

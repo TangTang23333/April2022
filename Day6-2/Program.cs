@@ -124,8 +124,8 @@ using System;
 //The quick brown fox jumps over the lazy dog / Yes! Really!!! /.
 //Really Yes dog lazy the over jumps fox brown / quick! The!!! /.
 //==============================================================================
-string s = new string("C# is not B++");
-ReverseSentence.Get(s);
+//string s = new string("C# is, not B!");
+//ReverseSentence.Get(s);
 
 //3.Write a program that extracts from a given text all palindromes, e.g. “ABBA”, “lamal”, “exe”
 //and prints them on the console on a single line, separated by comma and space.Print all
@@ -134,8 +134,8 @@ ReverseSentence.Get(s);
 //a, ABBA, exe, ExE
 
 //=========================================
-//var res = Palindrome.Get("Hi, exe ? ABBA! Hog fully a string: ExE.Bob");
-//Console.WriteLine(String.Join(", ", res));
+var res = Palindrome.Get("Hi, exe ? ABBA! Hog fully a string: ExE.Bob");
+Console.WriteLine(String.Join(", ", res));
 
 
 

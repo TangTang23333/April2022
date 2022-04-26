@@ -55,7 +55,7 @@ namespace Day7.Class.Class
             return age;
         }
 
-        public decimal GetSalary()
+        public virtual decimal GetSalary()
         {
 
             if (HourSalary < 0)
@@ -153,7 +153,7 @@ namespace Day7.Class.Class
             Title = title;
         }
 
-        public decimal GetSalary()
+        public override decimal GetSalary()
         {
 
             int experience = DateTime.Now.Year - Convert.ToDateTime(JoinDate).Year;

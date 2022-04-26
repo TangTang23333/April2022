@@ -8,10 +8,10 @@ namespace Day7.Class.Interfaces
 {
     internal interface IInstructorService : IPersonService
     {
-        decimal GetSalary();
-        
+       new decimal  GetSalary();
 
-           
+
+
     }
 
 }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj": {}
+    "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj": {}
   },
   "projects": {
-    "D:\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj": {
+    "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj",
+        "projectUniqueName": "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj",
         "projectName": "Day6-1",
-        "projectPath": "D:\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj",
-        "packagesPath": "C:\\Users\\yihua\\.nuget\\packages\\",
-        "outputPath": "D:\\Antra-training\\Assignments\\Day6-1\\obj\\",
+        "projectPath": "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day6-1\\Day6-1.csproj",
+        "packagesPath": "C:\\Users\\15109\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\15109\\Documents\\Antra-training\\Assignments\\Day6-1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yihua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\15109\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Runtime.CompilerServices.Unsafe": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

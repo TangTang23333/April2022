@@ -8,11 +8,11 @@ uint
 //A person’s gender (Male, Female, Prefer Not To Answer)
 string
 //A person’s salary
-double 
+decimal
 //A book’s ISBN
 string
 //A book’s price
-double
+decimal
 //A book’s shipping weight
 double 
 //A country’s population
@@ -42,11 +42,11 @@ actual value stored  		   | acutal address pointer stored
 -----------------------------------------------------------------------------
 //3. What is meant by the terms managed resource and unmanaged resource in .NET
 
-managed code, which has been compiled into intermediate language but not machine code, could be executed by machine
-in a safe framework, handling such as threads, memory, etc.
+managed resource ==> managed memory by GC, which be collected automatically by GC when there is no more reference to the 
+object, they will be collected by GC.
 
-unmanaged code, which has been compiled to machine-read code directly, which can be executed by machine directly,
-dangerous to the machine and OS.
+unmanaged resource ==> GC does not know their existence and have to be release from the memory using IDisposable interface. 
+
 
 
 //4. Whats the purpose of Garbage Collector in .NET?
@@ -61,24 +61,30 @@ as memory leakage, stack overflow etc.
 //1. What happens when you divide an int variable by 0?
 Error, can not be divided by zero
 
+
+
 //2. What happens when you divide a double variable by 0?
-return NaN 
+return NaN , float/double behaves diffrerently compare to int/long, float/double has PositiveInfinity/NegativeInfinity while 
+int/long does not.
+
 
 //3. What happens when you overflow an int variable, that is, set it to a value beyond its
 //range?
 Error, suggest goes to next data type with bigger range or 
-integral constant is too large. 
+integral constant is too large. can not explicitly convert int to other types.
+
 
 //4. What is the difference between x = y++; and x = ++y;?
-y = x++, y = oringial value of x, before add 1 to x.
-y = ++x, y = new value of x, which adds 1 to itself.
+y = x++, y = oringial value of x, before add 1 to x. ( y = x, x += 1)
+y = ++x, y = new value of x, which adds 1 to itself. ( x += 1, y= x)
+
 
 //5. What is the difference between break, continue, and return when used inside a loop
 statement?
 
 return: return the output, function ends
-break: stops the loop, and out of the loop
-continue: do nothing, continue to the next iteration of loop 
+break: jump out of the loop
+continue: skip the current iteration and goes to the next iteration
 
 -- no pass, just leave it blank 
 
@@ -88,20 +94,26 @@ for (start, end condition, increment)  {
 // do something
 }
 
+initializer expression, executed once at the beginning of the loop,
+conditional expression, executed every iteration, once the conditon is met, stop the iteration
+iterator expression, executed at the end of every iteration, 
+
+
 //7. What is the difference between the = and == operators?
 
-=: declare value, define variables
-==: equals to 
+=: declare value, define variables, assign right value to the left object. 
+==: equals to, if two object have same values
 
 //8. Does the following statement compile? for ( ; true; ) ;
 
 this will be a dead loop, never ends
 
 //9. What does the underscore _ represent in a switch expression?
-33
 
 _ used to pattern match a variable of type object in a switch statement
 This code will match the new _ and discard the variable passed to the case in switch(x)
+
+-- the underscore character is used to represent the default return value
 
 static void Main(string[] args)
 {

@@ -20,6 +20,7 @@ namespace Day8
     {
         
         public List<T> list = new List<T>();
+        
 
 
         public void Add(T item)

@@ -128,8 +128,25 @@ List<String> rebby_address = new List<String> { "1 avenue", "2 blvd" };
 Instructor Rebby = new Instructor(1, "1988-10-30", "2014-01-01", "Rebby", "Female",
     35, 40, rebby_address, 1, 1, "Instructor");
 
-Console.WriteLine(Rebby.ReportsTo);
 
+Course cs61A = new Course(1, "CS61A", 1, 1);
+Course cs68 = new Course(1, "CS61B", 1, 1);
+Course ds8 = new Course(1, "DS8", 1, 2);
+Course ds9 = new Course(1, "DS9", 1, 2);
+Course math601= new Course(1, "MATH601", 1, 3);
+Course math701 = new Course(1, "MATH701", 1, 3);
+Department cs = new Department(1, "2020-08-05", "2021-05-30", 500000);
+List<Course> courses = new List<Course> { math601, math701, cs61A, cs68 , ds8 , ds9 };
+Console.WriteLine($"Rebby reports to {Rebby.ReportsTo}");
+Console.WriteLine($"Rebby age is {Rebby.GetAge()}");
+Console.WriteLine($"Rebby salary is {Rebby.GetSalary()}");
+Console.WriteLine($"Get all course for department cs");
+foreach (string cname in cs.GetAllCourses(courses))
+{
+    Console.Write(cname);
+    Console.Write(" ,  ");
+}
+Console.WriteLine();
 //7. Try creating the two classes below, and make a simple program to work with them, as
 //described below
 //Create a Color class:
@@ -155,7 +172,7 @@ Console.WriteLine(Rebby.ReportsTo);
 //balls have been thrown. (Popped balls shouldn’t have changed.)
 
 
-Console.WriteLine(" ball red, size 5, blue size 5, black size 5, all no thrown before");
+    Console.WriteLine(" ball red, size 5, blue size 5, black size 5, all no thrown before");
 Ball blueball = new Ball(5, "Blue", 0);
 Ball redball = new Ball(5, "Red", 0);
 Ball blackball = new Ball(5, "Black", 0);

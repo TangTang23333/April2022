@@ -8,13 +8,13 @@ namespace Day7.Class.Interfaces
 {
     internal interface IDepartmentService
     {
-        public string GetHead(List<Class.Instructor> instructors, Class.Department dpt);
+        public string GetHead(List<Class.Instructor> instructors);
        
 
 
         public double GetBudget(Class.Department dpt);
 
-        public List<int> GetAllCourses(List<Class.Course> courses, Class.Department dpt);
+        public List<string> GetAllCourses(List<Class.Course> courses);
        
     }
 

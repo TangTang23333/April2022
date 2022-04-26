@@ -13,7 +13,7 @@ namespace Day7.Class.Interfaces
          decimal GetSalary();
        
 
-        List<string> GetAddresses();
+         List<string> GetAddresses();
         
       
 
