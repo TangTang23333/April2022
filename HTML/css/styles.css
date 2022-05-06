@@ -79,3 +79,65 @@ font-weight: 900;
 #q4inner {
     margin: 0 auto;
 }
+
+
+.q5 {
+    margin: 5px 35% 5px 35%;
+    width: 80%;
+    font-size: 30px;
+    color: blue;
+    position: static;
+}
+
+.head {
+    background-color: rgb(219, 212, 212);
+}
+
+
+.q5 td {
+    height: 100px;
+    width: 100px;
+    margin: 1px 2px 1px 2px;
+    align-content: center;
+    position: relative;
+}
+
+.q5 button {
+    position: absolute;
+    left:5px;
+    top:4px;
+    bottom: 4px;
+    right: 5px;
+    color: blue;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+#q5innertd {
+    position: absolute;
+
+}
+
+#q5inner {
+    font-size: 17px;
+    position: relative;
+    left:5px;
+    top:4px;
+    bottom: 4px;
+    right: 5px;
+    height: 45%;
+    width: 90%;
+    
+}
+
+.twobuttons {
+    display: flex;
+}
+
+.test button {
+    height: 100px;
+    width: 100px;
+    margin: 2px 5px;
+
+}
