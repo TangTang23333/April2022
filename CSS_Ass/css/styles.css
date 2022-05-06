@@ -1,0 +1,185 @@
+* {
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+.navbar {
+    background-color: rgb(22, 65, 124);
+    padding: 0 10px;
+    height: 75px;
+    padding: 20px;
+    display: flex;
+
+}
+
+.logo {
+    flex: 1;
+    display: flex;
+    color: white;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+h1 {
+    font-size: 70px;
+}
+
+
+
+#logoimg {
+    height: 80px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+
+
+.right-navbar {
+    flex: 4;
+    justify-content: space-around;
+}
+
+.top {
+    display: flex;
+    justify-content: end;
+    padding: 3px 45px;
+    height: 40%;
+    align-items: center;
+}
+
+.notification {
+    color: white;
+    font-size: 30px;
+    margin: 0 8px;
+}
+
+
+.user {
+    position: relative;
+    display: inline-block;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.user:hover .dropdown {
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.user:hover .p {
+    background-color: #3e8e41;
+}
+
+
+
+
+.search {
+    justify-content: center;
+    display: flex;
+    margin: 0 8px;
+}
+
+input {
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.menu {
+    display: flex;
+    justify-content: end;
+    color: white;
+    padding: 3px 30px;
+}
+
+
+.menu ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin: 5px 15px;
+
+}
+
+
+
+/* footer  */
+
+.footer {
+    background-color : black;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: left;
+    height: 400px;
+    
+
+}
+
+.address li {
+    margin: 0 auto;
+} 
+
+.services li {
+    margin-top: 10px;
+    border-bottom: 0.1px solid #d2d7da;
+} 
+
+.resources li{
+    margin-top: 5px;
+    border-bottom: 0.1px solid #d2d7da;
+
+} 
+
+.map {
+    color: white;
+
+}
+
+.map img {
+    height: 180px;
+    width: 300px;
+}
+
+.copyright {
+    height: 30px;
+    background-color:black;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    padding: 0 20px;
+}
+
+.icons svg {
+    margin: 0 5px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+}
