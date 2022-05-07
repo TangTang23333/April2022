@@ -1,6 +1,6 @@
 * {
     font-family: Calibri;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .navbar {
@@ -17,7 +17,7 @@
     display: flex;
     color: white;
     justify-content: center;
-    
+
     align-items: center;
 }
 
@@ -130,30 +130,30 @@ input {
 /* footer  */
 
 .footer {
-    background-color : black;
+    background-color: black;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: left;
     height: 400px;
-    
+
 
 }
 
 .address li {
     margin: 0 auto;
-} 
+}
 
 .services li {
     margin-top: 10px;
     border-bottom: 0.1px solid #d2d7da;
-} 
+}
 
-.resources li{
+.resources li {
     margin-top: 5px;
     border-bottom: 0.1px solid #d2d7da;
 
-} 
+}
 
 .map {
     color: white;
@@ -167,7 +167,7 @@ input {
 
 .copyright {
     height: 30px;
-    background-color:black;
+    background-color: black;
     color: white;
     align-items: center;
     justify-content: space-around;
@@ -183,3 +183,137 @@ ul {
     list-style: none;
     padding-left: 0px;
 }
+
+
+
+/* promotion session */
+.promotion {
+    
+    background: rgb(22, 65, 124);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    
+}
+
+.promotion h2 {
+    font-size: 35px;
+}
+
+.promotion button {
+
+    display: flex;
+    justify-content: end;
+    background-color: rgb(247, 163, 6);
+    padding: 5px 8px;
+    border-radius: 13px;
+    font-weight: bold;
+
+}
+
+
+/* newsletter session */
+.news {
+    background-color: rgb(229, 225, 225);
+    padding: 10px 80px;
+}
+
+.title {
+    
+    margin: 10px auto;
+    color: rgb(22, 65, 124);
+    width: 75%;
+}
+
+.title h3 {
+    font-size: 40px;
+}
+
+
+.wrapper {
+    
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.box {
+    border: 1px solid rgb(242, 234, 234);
+
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 60px;
+    background-color: white;
+    padding: 15px 30px;
+
+}
+
+.newstitle {
+    color: rgb(22, 65, 124);
+    font-weight: bolder;
+    font-size: 25px;
+    margin-bottom: 20px;
+    justify-content: start;
+    display: flex;
+}
+
+.date {
+    justify-content: end;
+    display: flex;
+    margin-bottom: 10px;
+    color: rgb(22, 65, 124);
+}
+
+.author {
+    color: gray;
+}
+
+
+.newstag {
+    display: flex;
+    align-items: center;
+
+}
+
+.boximage {
+    height: 200px;
+    margin: 0 auto;
+    width: 240px;
+}
+
+.tag {
+    background-color: lightgray;
+    font-size: bold;
+    border-radius:25px;
+    border: 1px solid gray;
+    padding: 1px 6px;
+    align-items: center;
+    height: 60%;
+    margin: 15px 5px;
+
+}
+
+hr {
+    
+    height: 0.5px;
+    border: none;
+    background-color: rgb(197, 185, 185);
+    
+}
+
+
+.pagination {
+    margin: 10px auto;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+
+
