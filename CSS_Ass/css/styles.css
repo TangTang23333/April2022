@@ -308,9 +308,20 @@ hr {
 
 
 .pagination {
-    margin: 10px auto;
-    justify-content: center;
+    margin: 10px auto 10px 190px;
+    justify-content: start;
     display: flex;
+}
+
+
+.page {
+    border: 1px solid white;
+    color: white;
+    background-color: rgb(38, 112, 185);
+}
+
+.page:hover {
+    background-color: rgb(239, 163, 23);
 }
 
 
