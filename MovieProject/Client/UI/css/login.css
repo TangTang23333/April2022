@@ -1,0 +1,21 @@
+.loginform {
+    width: 30%;
+    margin: auto auto;
+}
+
+.wrapper{
+    padding: 30px;
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+    border: 1px solid rgb(228, 222, 222);
+}
+
+
+#loginbutton, #registerbutton {
+    border-radius: 25px;
+    margin: auto 8px;
+}
+
+input {
+    margin: 20px auto;
+}

@@ -1,0 +1,37 @@
+#loginbutton,
+#registerbutton {
+    margin: auto 7px;
+}
+
+.navbar {
+    border-bottom: 1px solid rgb(218, 214, 214);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.wrapper {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    margin-left: 180px;
+
+}
+
+#registerform {
+    margin: 20px 30px;
+    padding: 20px 20px;
+
+}
+
+.w-100 {
+    margin: 20px 0;
+}
+
+.form-control {
+    margin: 10px auto;
+}
+
+input {
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+}
